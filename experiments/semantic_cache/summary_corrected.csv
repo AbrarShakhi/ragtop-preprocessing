@@ -1,0 +1,2 @@
+hit_rate,avg_latency_hit_s,avg_latency_miss_s,fair_speedup_within_run,naive_speedup_cross_run_DO_NOT_USE,similarity_threshold
+0.25,0.05659776499993541,0.6740449541666559,1.297030594987738,2.8396944031708515,0.92

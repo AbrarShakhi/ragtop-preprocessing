@@ -1,0 +1,2 @@
+hit_rate,avg_latency_hit_s,avg_latency_miss_s,total_latency_cached_s,total_latency_uncached_s,speedup,similarity_threshold
+0.25,0.05659776499993541,0.6740449541666559,4.157465254999806,11.805930816000227,2.8396944031708515,0.92

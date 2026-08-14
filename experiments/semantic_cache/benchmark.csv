@@ -1,0 +1,9 @@
+query,cache_hit,latency_s,matched_query,similarity
+AMD Ryzen laptop under $600,False,0.7501231919999327,,
+cheap AMD laptop under $600 dollars,False,0.8311740749999217,,
+gaming laptop with NVIDIA graphics under $1200,False,0.6324138530000027,,
+"budget laptop with AMD Ryzen processor, under 600 bucks",False,0.6525415910000447,,
+lightweight ultrabook for travel,False,0.5410411410000506,,
+AMD Ryzen laptop under $600,True,0.0603152249999539,AMD Ryzen laptop under $600,1.0
+NVIDIA gaming laptop under $1200 budget,True,0.052880304999916916,gaming laptop with NVIDIA graphics under $1200,0.9647
+laptop with 32GB RAM and 1TB SSD,False,0.636975872999983,,
