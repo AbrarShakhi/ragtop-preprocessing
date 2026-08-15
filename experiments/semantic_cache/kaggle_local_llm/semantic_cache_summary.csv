@@ -1,0 +1,2 @@
+hit_rate,avg_latency_hit_s,avg_latency_miss_s,speedup_hit_vs_miss,similarity_threshold,n_queries
+0.25,0.006299211499992907,25.818475623833365,4098.683719996136,0.92,8
