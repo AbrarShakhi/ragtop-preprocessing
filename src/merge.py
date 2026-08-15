@@ -1,53 +1,10 @@
-"""
-merge_sources.py
-=================
-Aligns two heterogeneous sources onto one common schema:
-
-  - Newegg scrape (laptops_newegg.csv)      -> per-page provenance
-    (scraped_at, html_sha256, field_provenance_json), real prices in USD,
-    76/719 rows with genuine user reviews.
-
-  - Kaggle "Laptop Price" dataset (laptop_price.csv, muhammetvarl)
-    -> 1,303 rows, clean/no missing values, prices in EUR, NO reviews and
-    NO battery field at all. Kaggle's own "last updated" metadata reads
-    2020-11-05 -- treat that as the collection date; there is no page-level
-    hash/provenance to attach because this is a static public dataset, not
-    something we scraped ourselves. That asymmetry is recorded explicitly
-    (source_dataset + source_collection_date + has_page_provenance) rather
-    than papered over.
-
-COMMON OUTPUT SCHEMA
----------------------
-title, price_usd, price_original, price_original_currency, cpu, ram_gb,
-storage, gpu, display, battery, category, document_text, has_review_text,
-source_dataset, source_collection_date, source_row_id, has_page_provenance
-
-KNOWN LIMITATIONS (documented, not hidden):
-  - EUR->USD uses a single fixed rate (see EUR_TO_USD below) applied
-    uniformly. The Kaggle prices reflect a ~2020 market; converting at
-    today's exchange rate does NOT adjust for 5+ years of inflation/price
-    change, so cross-source price comparisons are only roughly comparable.
-    Flag this explicitly in the M1 report rather than presenting price_usd
-    as apples-to-apples.
-  - Kaggle rows have no battery spec at all -> combined corpus battery
-    coverage will be even lower than the Newegg-only 46%. Report this,
-    don't quietly impute it.
-  - Kaggle rows have no review/user text -> document_text for those rows
-    is a synthesized spec description, not organic text like the Newegg
-    reviews. has_review_text distinguishes the two so retrieval/report
-    logic doesn't treat them as equivalent evidence.
-
-Run:
-    python3 merge_sources.py laptops_newegg.csv laptop_price.csv combined_laptops.csv
-"""
-
 import re
 import sys
 
 import pandas as pd
 
-EUR_TO_USD = 1.15  # mid-market rate, ~Aug 2026 — see note above re: staleness
-KAGGLE_COLLECTION_DATE = "2020-11-05"  # per Kaggle dataset page metadata
+EUR_TO_USD = 1.15  
+KAGGLE_COLLECTION_DATE = "2020-11-05" 
 
 
 def parse_ram(ram_str):
@@ -58,10 +15,7 @@ def parse_ram(ram_str):
 
 
 def parse_storage(memory_str):
-    """'128GB SSD +  1TB HDD' -> '128GB SSD + 1TB HDD' (just normalize
-    whitespace; keep as descriptive string like the Newegg 'storage'
-    field rather than forcing a single total-GB number, since type
-    (SSD vs HDD vs Hybrid) matters for the RAG use case too)."""
+
     if not isinstance(memory_str, str):
         return None
     return re.sub(r"\s+", " ", memory_str).strip()
