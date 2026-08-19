@@ -1,0 +1,7 @@
+query_a,query_b,similarity,would_falsely_hit_at_0.92,would_falsely_hit_at_0.80
+laptop under $600,laptop under $1600,0.8591842651367188,False,True
+laptop with 16GB RAM,laptop with 64GB RAM,0.7473196983337402,False,False
+AMD Ryzen laptop under $600,Intel Core laptop under $600,0.7385706901550293,False,False
+gaming laptop with NVIDIA graphics,gaming laptop with AMD graphics,0.7757790684700012,False,False
+cheapest laptop with an i9 processor,cheapest laptop with an i3 processor,0.8134123086929321,False,True
+laptop good for video editing,laptop good for gaming,0.6298971176147461,False,False
