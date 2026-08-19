@@ -1,0 +1,8 @@
+target,model_name,known_count,missing_count,missing_pct,metric_name,metric_value,secondary_metric_name,secondary_metric_value,confidence,filled_count,status
+ram_gb,RAM regression,1935,25,0.013,R2,0.642,MAE,4.826,HIGH,25,imputed
+battery_wh,Battery regression,319,1641,0.837,R2,0.773,MAE,6.273,HIGH,1641,imputed
+display_inches,Display regression,1947,13,0.007,R2,0.677,MAE,0.488,HIGH,13,imputed
+cpu,CPU regression,1921,39,0.02,Accuracy,0.343,Macro-F1,0.107,LOW,39,imputed
+storage,Storage regression,1942,18,0.009,Accuracy,0.36,Macro-F1,0.099,LOW,18,imputed
+gpu,GPU regression,1807,153,0.078,Accuracy,0.403,Macro-F1,0.067,MODERATE,153,imputed
+category,Category regression,1958,2,0.001,Accuracy,0.569,Macro-F1,0.186,MODERATE,2,imputed
